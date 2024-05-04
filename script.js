@@ -1,7 +1,5 @@
-// create the event that will trigger the game to start
-document.addEventListener("keydown",()=>{
-    $("h1").html("Level 1");
-    // choice of random starting point --> choice among 4 an play the corresponding sound.
+// function used to generate a press and change in color of a button
+const randomButton = () =>{
     const listColor = ["blue","green","yellow","red"];
     let randomColor = listColor[Math.floor(Math.random()*4)];
     $(`.${randomColor}`).addClass("pressed");
@@ -10,6 +8,13 @@ document.addEventListener("keydown",()=>{
     setTimeout(()=>{
         $(`.${randomColor}`).removeClass("pressed");
     },50)
+}
+
+// create the event that will trigger the game to start and selection of a 
+// random button
+document.addEventListener("keydown",()=>{
+    $("h1").html("Level 1");
+    randomButton();
 })
 
 // detection of which button is pressed and play the corresponding sound (using jQuery)
