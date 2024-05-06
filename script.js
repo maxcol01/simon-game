@@ -1,3 +1,6 @@
+// FURTHER INSTRUCTIONS
+//RETHINK THE ENTIRE LOGIC -> FUNCTIONS ?
+
 // function used to generate a press and change in color of a button
 const listColor = ["blue","green","yellow","red"];
 let listButton = [];
