@@ -6,14 +6,12 @@ const listColor = ["blue","green","yellow","red"];
 
 let level = 2;
 let listUser = [];
+listButton = [];
+document.addEventListener("keydown",()=>{
+    $("h1").html("Level 1");
+    listButton.push(randomButton()); 
+})
 
-const startGame = () => {
-    let listButton = [];
-    document.addEventListener("keydown",()=>{
-        $("h1").html("Level 1");
-        listButton.push(randomButton()); 
-    })
-}
 
 const rendering = (color) =>{
     $(`.${color}`).addClass("pressed");
@@ -30,18 +28,14 @@ const randomButton = () =>{
     return randomColor
 }
 
-
-// startGame()
-startGame();
-
 //checht the user input
 $(".btn").on("click",(event) =>{
     let buttonColor = event.target.id;
     rendering(buttonColor);
     if (buttonColor == listButton[0]){
-        ("h1").html("Level 2");
+        $("h1").html("Level 2");
     }else{
-        ("h1").html("Game over");
+        $("h1").html("Game over");
         startGame();
     }
 })
