@@ -37,7 +37,7 @@ $(".btn").on("click",(event)=>{
         console.log(buttonColor)
         console.log(listButton[0])
         if(buttonColor == listButton[i]){
-            console.log("je passe ici")
+            console.log("je passe par là")
             i++
         }else{
             $("h1").html("Game over");
