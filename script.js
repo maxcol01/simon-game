@@ -32,33 +32,15 @@ const randomButton = () =>{
 $(".btn").on("click",(event) =>{
     let buttonColor = event.target.id;
     rendering(buttonColor);
+    // need a way to iterate over the listButton array
+    console.log(listButton)
+    console.log(buttonColor)
     if (buttonColor == listButton[0]){
         $("h1").html("Level 2");
+        setTimeout(() => listButton.push(randomButton()),1000)
     }else{
         $("h1").html("Game over");
         startGame();
     }
 })
 
-
-// detection of which button is pressed and play the corresponding sound (using jQuery)
-// $(".btn").on("click",(event)=>{ 
-//     let i = 0
-//     while(i < listButton.length){
-//         let buttonColor = event.target.id;
-//         rendering(buttonColor);
-//         listUser.push(buttonColor);
-//         console.log(buttonColor)
-//         console.log(listButton[0])
-//         if(buttonColor == listButton[i]){
-//             console.log("je passe par là")
-//             i++
-//         }else{
-//             $("h1").html("Game over");
-//             break
-//         }
-//     }
-//     $("h1").html(`Level ${level++}`);
-//     setTimeout(() =>listButton.push(randomButton()),1000)
-//     // once clicked that we need to check !
-// })
