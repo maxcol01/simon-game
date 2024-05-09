@@ -17,7 +17,7 @@ const rendering = (color) =>{
     audio.play();
     setTimeout(()=>{
         $(`.${color}`).removeClass("pressed");
-    },50)
+    },100)
 }
 
 const randomButton = () =>{
@@ -27,25 +27,30 @@ const randomButton = () =>{
 }
 
 const gameOver = ()=>{
+    $("h1").html("Game Over");
     $("body").addClass("game-over");
     let audio = new Audio("./sounds/wrong.mp3");
     audio.play();
 }
 
+
 // OK the test for a length of one works but now we need to increase the size
 $(".btn").on("click",(event) =>{
+    console.log(counter);
+    console.log(listButton);
     if (counter < listButton.length){
         if(event.target.id == listButton[counter-1]){
             counter++;
         }else{
-            $("h1").html("Game Over");
             gameOver();
         }
     }else{
         if(event.target.id == listButton[counter-1]){
-            alert("ok we need to upgrade")
+            //alert("ok we need to upgrade")
+            $("h1").html(`Level ${level++}`);
+            counter = 1;
+            listButton.push(randomButton()); 
         }else{
-            $("h1").html("Game Over")
             gameOver();
         }
     }
