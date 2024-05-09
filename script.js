@@ -1,10 +1,10 @@
-// function used to generate a press and change in color of a button
+
 const listColor = ["blue","green","yellow","red"];
 
 let level = 2;
-let listUser = [];
 listButton = [];
 let counter = 1;
+
 document.addEventListener("keydown",()=>{
     $("h1").html("Level 1");
     listButton.push(randomButton()); 
@@ -34,7 +34,6 @@ const gameOver = ()=>{
 }
 
 
-// OK the test for a length of one works but now we need to increase the size
 $(".btn").on("click",(event) =>{
     console.log(counter);
     console.log(listButton);
