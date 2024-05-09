@@ -26,23 +26,27 @@ const randomButton = () =>{
     return randomColor
 }
 
-//checht the user input
-// the idea is to check if the user input is the same as the listButton array
-// we want to trigger the function that compares once clicking the button and we will use a 
-// counter variable to check if the retained value is the same as the one at the position in the listButton array.
-// this avoid using a for loop.
+const gameOver = ()=>{
+    $("body").addClass("game-over");
+    let audio = new Audio("./sounds/wrong.mp3");
+    audio.play();
+}
+
+// OK the test for a length of one works but now we need to increase the size
 $(".btn").on("click",(event) =>{
     if (counter < listButton.length){
         if(event.target.id == listButton[counter-1]){
             counter++;
         }else{
             $("h1").html("Game Over");
+            gameOver();
         }
     }else{
         if(event.target.id == listButton[counter-1]){
             alert("ok we need to upgrade")
         }else{
             $("h1").html("Game Over")
+            gameOver();
         }
     }
 
