@@ -2,32 +2,35 @@
 const listColor = ["blue","green","yellow","red"];
 
 let level = 2;
-listButton = [];
 let counter = 1;
+listButton = [];
 
 document.addEventListener("keydown",()=>{
     $("h1").html("Level 1");
     listButton.push(randomButton()); 
+    if($("body").hasClass("game-over")){
+        $("body").removeClass("game-over")
+    }
 })
 
 
-const rendering = (color) =>{
+const rendering = (color, time) =>{
     $(`.${color}`).addClass("pressed");
     let audio = new Audio(`./sounds/${color}.mp3`);
     audio.play();
     setTimeout(()=>{
         $(`.${color}`).removeClass("pressed");
-    },100)
+    },time)
 }
 
 const randomButton = () =>{
     let randomColor = listColor[Math.floor(Math.random()*4)];
-    rendering(randomColor);
+    rendering(randomColor, 200);
     return randomColor
 }
 
 const gameOver = ()=>{
-    $("h1").html("Game Over");
+    $("h1").html("Game Over ! Press a key to start again");
     $("body").addClass("game-over");
     let audio = new Audio("./sounds/wrong.mp3");
     audio.play();
@@ -35,13 +38,14 @@ const gameOver = ()=>{
 
 
 $(".btn").on("click",(event) =>{
-    console.log(counter);
-    console.log(listButton);
+    //rendering(event.target.id,50);
     if (counter < listButton.length){
         if(event.target.id == listButton[counter-1]){
             counter++;
         }else{
             gameOver();
+            listButton = [];
+            level = 2;
         }
     }else{
         if(event.target.id == listButton[counter-1]){
@@ -51,6 +55,8 @@ $(".btn").on("click",(event) =>{
             listButton.push(randomButton()); 
         }else{
             gameOver();
+            listButton = [];
+            level = 2;
         }
     }
 
