@@ -11,6 +11,7 @@ document.addEventListener("keydown",()=>{
     if($("body").hasClass("game-over")){
         $("body").removeClass("game-over")
     }
+
 })
 
 
@@ -38,7 +39,7 @@ const gameOver = ()=>{
 
 
 $(".btn").on("click",(event) =>{
-    //rendering(event.target.id,50);
+
     if (counter < listButton.length){
         if(event.target.id == listButton[counter-1]){
             counter++;
