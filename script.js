@@ -4,6 +4,7 @@ const listColor = ["blue","green","yellow","red"];
 let level = 2;
 let listUser = [];
 listButton = [];
+let counter = 1;
 document.addEventListener("keydown",()=>{
     $("h1").html("Level 1");
     listButton.push(randomButton()); 
@@ -31,17 +32,20 @@ const randomButton = () =>{
 // counter variable to check if the retained value is the same as the one at the position in the listButton array.
 // this avoid using a for loop.
 $(".btn").on("click",(event) =>{
-    let buttonColor = event.target.id;
-    rendering(buttonColor);
-    // need a way to iterate over the listButton array
-    console.log(listButton)
-    console.log(buttonColor)
-    if (buttonColor == listButton[0]){
-        $("h1").html("Level 2");
-        setTimeout(() => listButton.push(randomButton()),1000)
+    if (counter < listButton.length){
+        if(event.target.id == listButton[counter-1]){
+            counter++;
+        }else{
+            $("h1").html("Game Over");
+        }
     }else{
-        $("h1").html("Game over");
-        startGame();
+        if(event.target.id == listButton[counter-1]){
+            alert("ok we need to upgrade")
+        }else{
+            $("h1").html("Game Over")
+        }
     }
-})
+
+    }
+)
 
