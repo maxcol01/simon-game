@@ -35,6 +35,9 @@ const gameOver = ()=>{
     $("body").addClass("game-over");
     let audio = new Audio("./sounds/wrong.mp3");
     audio.play();
+    level = 2;
+    counter = 1;
+    listButton = [];
 }
 
 
