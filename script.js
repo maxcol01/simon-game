@@ -39,10 +39,11 @@ const gameOver = ()=>{
 
 
 $(".btn").on("click",(event) =>{
-
+    rendering(event.target.id,100)
     if (counter < listButton.length){
         if(event.target.id == listButton[counter-1]){
             counter++;
+            
         }else{
             gameOver();
             listButton = [];
@@ -53,7 +54,8 @@ $(".btn").on("click",(event) =>{
             //alert("ok we need to upgrade")
             $("h1").html(`Level ${level++}`);
             counter = 1;
-            listButton.push(randomButton()); 
+            setTimeout(()=>listButton.push(randomButton()), 400 )
+            
         }else{
             gameOver();
             listButton = [];
